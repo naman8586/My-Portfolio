@@ -91,21 +91,25 @@ export const workData = [
         title: 'Integrelearn',
         description: 'E-learning app.',
         bgImage: '/work-1.png',
+        repoLink:'https://github.com/Lakshya-249/Integrelearn_project',
     },
     {
         title: 'NamasteNomad',
         description: 'Tour & Tourist app.',
         bgImage: '/work-2.png',
+        repoLink:'https://github.com/naman8586/tourism_project',
     },
     {
         title: 'E-com web',
         description: 'Make an Online store',
         bgImage: '/work-3.png',
+        repoLink:'https://github.com/ar5had/ecommerce-site-template'
     },
     {
         title: 'Basic reactjs projects',
         description: 'Weather app,to do lists.',
         bgImage: '/work-4.png',
+        repoLink:'https://github.com/naman8586/Quiz-app'
     },
 ]
 

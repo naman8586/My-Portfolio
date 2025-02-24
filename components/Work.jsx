@@ -1,37 +1,56 @@
 import React from "react";
 import Image from "next/image";
 import { assets, workData } from "@/assets/assets";
-
-// https://todo-list-lovat-mu-88.vercel.app/
+import {motion} from "motion/react"
 
 const Work = ({ isDarkMode }) => {
   return (
-    <div
+    <motion.div
+    initial={{ opacity:0}}
+      whileInView={{opacity:1 }}
+      transition={{duration:1}}
       id="work"
       className={`w-full px-[12%] py-16 scroll-mt-20 ${
         isDarkMode ? "bg-darkTheme text-white" : "bg-gray-50 text-gray-800"
       }`}
     >
-      <h4
+      <motion.h4
+      initial={{ opacity:0,y:-20}}
+      whileInView={{opacity:1 , y:0}}
+      transition={{duration:0.5, delay:0.5}}
         className={`text-lg text-center font-Ovo mb-2 ${
           isDarkMode ? "text-gray-400" : "text-gray-600"
         }`}
       >
         My Portfolio
-      </h4>
-      <h2 className="text-5xl text-center font-Ovo">My Latest Work</h2>
-      <p
+      </motion.h4>
+      <motion.h2
+      initial={{ opacity:0,y:-20}}
+      whileInView={{opacity:1 , y:0}}
+      transition={{duration:0.5, delay:0.5}}
+       className="text-5xl text-center font-Ovo">My Latest Work
+       </motion.h2>
+      <motion.p
+      initial={{ opacity:0}}
+      whileInView={{opacity:1 }}
+      transition={{duration:0.7, delay:0.5}}
         className={`max-w-2xl text-center mx-auto mt-5 mb-12 ${
           isDarkMode ? "text-gray-300" : "text-gray-700"
         }`}
       >
         Welcome to my Web development portfolio! Explore a collection of
         projects showcasing my expertise in Front-end development.
-      </p>
+      </motion.p>
 
-      <div className="grid grid-cols-auto my-10 gap-5">
+      <motion.div 
+      initial={{ opacity:0}}
+      whileInView={{opacity:1 }}
+      transition={{duration:0.9, delay:0.6}}
+      className="grid grid-cols-auto my-10 gap-5">
         {workData.map((project, index) => (
-          <div
+          <motion.div
+          whileHover={{scale:1.05}}
+          transition={{duration:0.3}}
             key={index}
             className="aspect-square bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer group"
             style={{ backgroundImage: `url(${project.bgImage})` }}
@@ -59,7 +78,11 @@ const Work = ({ isDarkMode }) => {
                   {project.description}
                 </p>
               </div>
-              <div
+
+              <a
+                href={project.repoLink} 
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`border rounded-full w-9 h-9 flex items-center justify-center shadow-[2px_2px_0] transition ${
                   isDarkMode
                     ? "border-gray-500 shadow-gray-600 group-hover:bg-lime-400"
@@ -68,16 +91,19 @@ const Work = ({ isDarkMode }) => {
               >
                 <Image
                   src={assets.send_icon}
-                  alt="Send Icon"
+                  alt="Visit Repository"
                   className="w-5"
                 />
-              </div>
+              </a>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
-      <a
+      <motion.a
+      initial={{ opacity:0}}
+      whileInView={{opacity:1 }}
+      transition={{duration:0.5, delay:1.1}}
         href=""
         className={`w-max flex items-center justify-center gap-2 border-[0.5px] rounded-full py-3 px-10 mx-auto my-20 duration-500 ${
           isDarkMode
@@ -91,8 +117,8 @@ const Work = ({ isDarkMode }) => {
           alt="Right Arrow"
           className="w-4"
         />
-      </a>
-    </div>
+      </motion.a>
+    </motion.div>
   );
 };
 

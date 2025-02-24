@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { assets } from "@/assets/assets";
+import {motion} from "motion/react"
 
 const Contact = () => {
   const [result, setResult] = useState("");
@@ -30,24 +31,46 @@ const Contact = () => {
   };
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity:0}}
+      whileInView={{opacity:1 }}
+      transition={{duration:1}}
       id="contact"
       className="w-full px-[12%] py-16 scroll-mt-20 bg-[url('/footer-bg-color.png')] bg-no-repeat bg-center bg-[length:90%_auto] dark:bg-none"
     >
-      <h4 className="text-lg text-center font-Ovo text-gray-600 mb-2
+      <motion.h4 
+      initial={{ opacity:0,y:-20}}
+      whileInView={{opacity:1 , y:0}}
+      transition={{duration:0.5, delay:0.5}}
+      className="text-lg text-center font-Ovo text-gray-600 mb-2
        dark:text-gray-400 ">
         Connect with Me
-      </h4>
-      <h2 className="text-5xl text-center font-Ovo text-gray-800 dark:text-white">
+      </motion.h4>
+      <motion.h2
+      initial={{ opacity:0,y:-20}}
+      whileInView={{opacity:1 , y:0}}
+      transition={{duration:0.5, delay:0.5}}
+       className="text-5xl text-center font-Ovo text-gray-800 dark:text-white">
         Get in Touch
-      </h2>
-      <p className="max-w-2xl text-center mx-auto mt-5 mb-12 text-gray-700 dark:text-gray-200">
+      </motion.h2>
+      <motion.p 
+      initial={{ opacity:0,y:-20}}
+      whileInView={{opacity:1 , y:0}}
+      transition={{duration:0.5, delay:0.5}}
+      className="max-w-2xl text-center mx-auto mt-5 mb-12 text-gray-700 dark:text-gray-200">
         I'd love to hear from you! If you have any questions, comments, or
         feedback, please use the form below.
-      </p>
-      <form onSubmit={onSubmit} className="max-w-2xl mx-auto">
+      </motion.p>
+      <motion.form
+      initial={{ opacity:0,y:-20}}
+      whileInView={{opacity:1 , y:0}}
+      transition={{duration:0.5, delay:0.9}}
+      onSubmit={onSubmit} className="max-w-2xl mx-auto">
         <div className="grid grid-cols-auto gap-6 mt-10 mb-8">
-          <input
+          <motion.input
+          initial={{ opacity:0,x:-50}}
+          whileInView={{opacity:1 , x:0}}
+          transition={{duration:0.6, delay:1.1}}
             type="text"
             id="name"
             required
@@ -55,7 +78,10 @@ const Contact = () => {
             placeholder="Enter your name"
             name="name"
           />
-          <input
+          <motion.input
+          initial={{ opacity:0,x:50}}
+          whileInView={{opacity:1 , x:0}}
+          transition={{duration:0.6, delay:1.2}}
             type="email"
             required
             id="email"
@@ -65,7 +91,10 @@ const Contact = () => {
           />
         </div>
         <div className="mb-6">
-          <textarea
+          <motion.textarea
+          initial={{ opacity:0,y:100}}
+          whileInView={{opacity:1 , y:0}}
+          transition={{duration:0.5, delay:1.3}}
             id="message"
             required
             rows="5"
@@ -73,18 +102,20 @@ const Contact = () => {
             dark:bg-darkHover/30 dark:border-white/90"
             placeholder="Enter your message"
             name="message"
-          ></textarea>
+          ></motion.textarea>
         </div>
-        <button
+        <motion.button
+        whileHover={{scale:1.05}}
+        transition={{duration:0.3}}
           type="submit"
           className="py-3 text-white px-8 w-max flex items-center justify-between gap-2 bg-black/80 white rounded-full mx-auto hover:bg-black duration-500 dark:bg-transparent dark:border-[0.5px] dark:hover:bg-darkHover"
         >
           Submit now{" "}
           <Image src={assets.right_arrow_white} alt="" className="w-4" />
-        </button>
+        </motion.button>
         <p className="mt-4">{result}</p>
-      </form>
-    </div>
+      </motion.form>
+    </motion.div>
   );
 };
 
